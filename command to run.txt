@@ -1,0 +1,13 @@
+ cd /Users/ek5990/kakfaconsume
+
+->DEV
+
+sh run-client.sh
+
+->LOCAL
+
+./run-client-local.sh TP.FINACC.SYNC.TMP
+
+./run-client-local.sh TP.FINACC.LATEST.TMP
+
+./run-client-local.sh TP.FINACC.CHANGE.TMP
