@@ -1,0 +1,45 @@
+Kafka Command Lines
+
+*********************************************************************************************************************************************************************
+
+—>LOCAL
+
+1.  cd /Users/ek5990/kakfaconsume
+
+2.  ./run-client-local.sh TP.FINACC.SYNC.TMP
+
+3.  ./run-client-local.sh TP.FINACC.LATEST.TMP
+
+4.  ./run-client-local.sh TP.FINACC.CHANGE.TMP
+
+
+—>DEV
+
+	1	cd /Users/ek5990/kakfaconsume
+	2	sh run-client.sh
+
+
+	1	cd /Users/ek5990/Documents/kafka_2.12-2.3.0
+	2	./bin/kafka-console-consumer.sh --bootstrap-server "ch3dr030109.express-scripts.com:9092,ch3dr030110.express-scripts.com:9092,ch3dr030111.express-scripts.com:9092,ch3dr030112.express-scripts.com:9092,ch3dr030113.express-scripts.com:9092,ch3dr030114.express-scripts.com:9092" --topic TP.FINACC.TRANSFORM.SYNC.TMP --group "finacckafkacucumber_tmp" --consumer.config /Users/ek5990/esi/jaas/client-ssl.properites
+	3	./bin/kafka-console-consumer.sh --bootstrap-server "ch3dr030109.express-scripts.com:9092,ch3dr030110.express-scripts.com:9092,ch3dr030111.express-scripts.com:9092,ch3dr030112.express-scripts.com:9092,ch3dr030113.express-scripts.com:9092,ch3dr030114.express-scripts.com:9092" --topic TP.FINACC.SYNC.TMP --group "finacckafkacucumber_tmp" --consumer.config /Users/ek5990/esi/jaas/client-ssl.properites
+	4	./bin/kafka-console-consumer.sh --bootstrap-server "ch3dr030109.express-scripts.com:9092,ch3dr030110.express-scripts.com:9092,ch3dr030111.express-scripts.com:9092,ch3dr030112.express-scripts.com:9092,ch3dr030113.express-scripts.com:9092,ch3dr030114.express-scripts.com:9092" --topic TP.FINACC.CHANGE.TMP --group "finacckafkaapi_tmp" --consumer.config /Users/ek5990/esi/jaas/client-ssl.properites
+	5	./bin/kafka-console-consumer.sh --bootstrap-server "ch3dr030109.express-scripts.com:9092,ch3dr030110.express-scripts.com:9092,ch3dr030111.express-scripts.com:9092,ch3dr030112.express-scripts.com:9092,ch3dr030113.express-scripts.com:9092,ch3dr030114.express-scripts.com:9092" --topic TP.FINACC. LATEST.TMP --group "finacckafkaapi_tmp" --consumer.config /Users/ek5990/esi/jaas/client-ssl.properites
+
+
+**********************************************************************************************************************************************************************
+—> Clears the Data in Topic
+
+-> rm -rf /tmp/kafka-logs/TP.FINACC*
+-> ls -lrt
+
+*********************************************************************************************************************************************************************
+—> Reset the Offset 
+
+This will reset the offset to that time, please note the time is in UTC
+
+./bin/kafka-console-consumer.sh --bootstrap-server "ch3dr030109.express-scripts.com:9092,ch3dr030110.express-scripts.com:9092,ch3dr030111.express-scripts.com:9092,ch3dr030112.express-scripts.com:9092,ch3dr030113.express-scripts.com:9092,ch3dr030114.express-scripts.com:9092"
+  --topic TP.FINACC.SYNC.TMP --group “finacckafkacucumber_tmp" --reset-offsets --to-datetime 2019-06-14T14:45:00.000 —execute
+
+******************************************************************************************************************************************************
+
+
